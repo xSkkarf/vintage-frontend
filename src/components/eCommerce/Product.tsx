@@ -1,16 +1,19 @@
+import { TProductResponse } from "../../types/types"
 
-const Product = () => {
+const Product = ({image, name, price, oldPrice}: TProductResponse) => {
 
   function addToCart(){
 
   }
   return (
     <div className="my-6">
-      <div className="w-50 h-60 bg-blue-300"></div>
-      <div className="my-1 text-2xl">title</div>
+      <div
+      style={{ "--image-url": `url(${image})` } as React.CSSProperties}
+      className="w-50 h-60 bg-[image:var(--image-url)] bg-cover bg-center bg-no-repeat rounded-md"></div>
+      <div className="my-1 text-2xl">{name}</div>
       <div className="my-1">
-        <span className="line-through text-gray-500">49.99$</span> 
-        <span className="ml-2 text-black">39.99$</span>
+        <span className="line-through text-gray-500">{oldPrice}$</span> 
+        <span className="ml-2 text-black">{price}$</span>
       </div>
       <div>
         <button 

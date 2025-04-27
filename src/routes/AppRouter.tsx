@@ -24,15 +24,14 @@ const router = createBrowserRouter([
         element: <Categories />,
       },
       {
-        path: "products/:id?",
+        path: "products/:categoryName?",
         element: <Products />,
         loader: ({params}) => {
-            if (!params.id){
-                return true;
+            if (!params.categoryName){
+                return "all";
             }
-            if (typeof Number(params.id) == "number" && Number(params.id) > 0) {
-                console.log(params.id);
-                return params.id;
+            if (typeof params.categoryName == "string" && /^[a-z]+$/i.test(params.categoryName)) {
+                return params.categoryName;
             } else {
                 throw new Response("Bad request", {
                     status: 400,
