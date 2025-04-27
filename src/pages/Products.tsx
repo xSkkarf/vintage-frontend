@@ -10,7 +10,7 @@ const Products = () => {
   const {records, loading, error} = useAppSelector(state => state.productsSlice)
   useEffect(()=>{
     dispatch(actGetProducts(category));
-  }, [dispatch]);
+  }, [dispatch, category]);
 
   const productsList = records.length > 0 ?
     records.map(record => <Product key={record.id} {...record} />) :
