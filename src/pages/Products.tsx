@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import actGetProducts from "../store/products/act/actGetProducts";
 import { productsCleanUp } from "../store/products/productsSlice";
 import Loading from "../components/common/Loading";
+import GridList from "../components/common/GridList";
 
 const Products = () => {
   const category: string = useLoaderData();
@@ -19,16 +20,11 @@ const Products = () => {
     };
   }, [dispatch, category]);
 
-  const productsList =
-    records.length > 0
-      ? records.map((record) => <Product key={record.id} {...record} />)
-      : "There are no products";
+  
   return (
     <>
       <Loading status={loading} error={error}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-          {productsList}
-        </div>
+        <GridList records={records} renderItem={(record) => <Product key={record.id} {...record} /> } />
       </Loading>
     </>
   );
