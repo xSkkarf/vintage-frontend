@@ -1,19 +1,32 @@
-import { configureStore } from '@reduxjs/toolkit'
-import categoriesSlice from "./categories/categoriesSlice"
-import productsSlice from "./products/productsSlice"
-import cartSlice from './cart/cartSlice'
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import categoriesSlice from "./categories/categoriesSlice";
+import productsSlice from "./products/productsSlice";
+import cartSlice from "./cart/cartSlice";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-export const store = configureStore({
+const cartPersistConfig = {
+  key: "cart",
+  storage,
+  whitelist: ["items", "count"],
+};
+
+const rootReducer = combineReducers({
+  categoriesSlice,
+  productsSlice,
+  cartSlice: persistReducer(cartPersistConfig, cartSlice),
+});
+
+const store = configureStore({
   reducer: {
-    categoriesSlice,
-    productsSlice,
-    cartSlice,
+    rootReducer,
   },
-})
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>
+export type RootState = ReturnType<typeof store.getState>;
 // Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
 
-export default store;
+const persistor = persistStore(store);
+export { store, persistor };

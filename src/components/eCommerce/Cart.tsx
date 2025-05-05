@@ -3,7 +3,7 @@ import { useAppSelector } from "../../store/hooks";
 
 const Cart = () => {
   const { count } = useAppSelector(
-    (state) => state.cartSlice
+    (state) => state.rootReducer.cartSlice
   );
 
   return (

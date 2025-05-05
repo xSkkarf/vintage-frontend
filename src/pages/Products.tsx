@@ -11,7 +11,7 @@ const Products = () => {
   const category: string = useLoaderData();
   const dispatch = useAppDispatch();
   const { records, loading, error } = useAppSelector(
-    (state) => state.productsSlice
+    (state) => state.rootReducer.productsSlice
   );
   useEffect(() => {
     dispatch(actGetProducts(category));
