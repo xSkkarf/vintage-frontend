@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { TProductResponse } from "../../../types/types";
+import { TProduct } from "../../../types/types";
 
 
 const actGetProducts = createAsyncThunk(
@@ -9,7 +9,7 @@ const actGetProducts = createAsyncThunk(
     const { rejectWithValue } = thunkAPI;
     try {
       const params = (categoryName === "all" ? "" : `?categoryPrefix=${categoryName}`)
-      const response = await axios.get<TProductResponse[]>(
+      const response = await axios.get<TProduct[]>(
         `http://localhost:5005/products${params}`
       );
       return response.data;

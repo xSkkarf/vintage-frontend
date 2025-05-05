@@ -1,11 +1,11 @@
-export type TCategoryResponse = {
+export type TCategory = {
   id: number;
   name: string;
   image: string;
   prefix: string;
 };
 
-export type TProductResponse = {
+export type TProduct = {
   id: number;
   name: string;
   brand: string;
@@ -20,6 +20,7 @@ export type TProductResponse = {
   featured: boolean;
   ingredients: string[];
   tags: string[];
+  cartQuantity?: number
 }
 
 export type TLoading = "idle" | "pending" | "succeeded" | "failed";

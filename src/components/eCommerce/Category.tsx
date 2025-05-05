@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { TCategoryResponse } from "../../types/types";
+import { TCategory } from "../../types/types";
 
-const Category = ({ name, image, prefix }: TCategoryResponse) => {
+const Category = ({ name, image, prefix }: TCategory) => {
   return (
     <Link to={`/products/${prefix}`}>
       <div

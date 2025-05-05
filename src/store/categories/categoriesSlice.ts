@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetCategories from "./act/actGetCategories";
-import { TCategoryResponse, TLoading } from "../../types/types";
+import { TCategory, TLoading } from "../../types/types";
 
 interface ICategoriesState {
-    records: TCategoryResponse[]
+    records: TCategory[]
     loading: TLoading;
     error: string | null;
 }

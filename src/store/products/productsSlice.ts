@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetProducts from "./act/actGetProducts";
-import { TProductResponse, TLoading } from "../../types/types";
+import { TProduct, TLoading } from "../../types/types";
 
 interface IProductsState {
-    records: TProductResponse[]
+    records: TProduct[]
     loading: TLoading;
     error: string | null;
 }
