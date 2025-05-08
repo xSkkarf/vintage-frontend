@@ -11,7 +11,7 @@ const Header = () => {
           </span>
         </div>
 
-        <div>
+        <div className="relative">
           <Cart />
         </div>
       </div>
